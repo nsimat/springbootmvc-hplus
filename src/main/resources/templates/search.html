@@ -42,20 +42,20 @@
     </div>
 </section>
 <!-- guarantee -->
-<div th:if="${not #lists.isEmpty(products)}">
 
-    <section id="products" class="section">
-        <div th:each="product : ${products}">
-            <div class="productContainer">
+
+    <section id="products" class="section" th:if="${not #lists.isEmpty(products)}">
+        <div th:each="product : ${products}" class="productContainer">
+
                 <div class="productContainerItem">
                     <img id="pic1" th:src="${product.getImagePath()}">
-                    <input th:type="text" th:name="product" th:value="${product.getName()}"><br/>
+                    <input th:type="text" th:name="product" th:value="${product.getName()}">
                 </div>
-            </div>
+
         </div>
     </section>
 
-</div>
+
 
 <section id="history" class="section">
     <div class="container">
