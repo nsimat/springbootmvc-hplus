@@ -12,5 +12,5 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
     @Query("select p from Product p where p.name like %:name%")
-    public List<Product> searchName(@Param("name") String name);
+    public List<Product> searchByName(@Param("name") String name);
 }

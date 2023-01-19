@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:th="http://www.thymeleaf.org/">
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>H+ Sport</title>
@@ -13,14 +13,14 @@
     <nav class="nav" role="navigation">
         <div class="container nav-elements">
             <div class="branding">
-                <a th:href="@{home}"><img th:src="@{images/hpluslogo.svg}"
-                                    alt="Logo - H Plus Sports"></a>
+                <a th:href="@{/home}"><img th:src="@{/images/hpluslogo.svg}"
+                                           alt="Logo - H Plus Sports"></a>
             </div>
             <!-- branding -->
             <ul class="navbar">
-                <li><a href="#">home</a></li>
+                <li><a href="@{/home}">home</a></li>
                 <li><a href="#">login</a></li>
-                <li><a href="#">search</a></li>
+                <li><a href="@{/goToSearch}">search</a></li>
                 <li><a href="#">linkedin</a></li>
             </ul><!-- navbar -->
             <!-- navbar -->
@@ -36,28 +36,26 @@
         <h2 class="headline">Search Products</h2>
         <form th:action="@{/search}" method="get">
             <label class="card-title">Search your product</label>
-            <input path="search" name="search" value="">
+            <input path="search" th:name="search" value="">
             <input type="submit" value="Search">
         </form>
     </div>
 </section>
 <!-- guarantee -->
+<div th:if="${not #lists.isEmpty(products)}">
 
-<section id="products" class="section">
-
-    <div class="productContainer">
-
-        <div class="productContainerItem">
-            <img id="pic1" src="#">
-            <input type="text" name="product"
-                   value="#"><br />
-
+    <section id="products" class="section">
+        <div th:each="product : ${products}">
+            <div class="productContainer">
+                <div class="productContainerItem">
+                    <img id="pic1" th:src="${product.getImagePath()}">
+                    <input th:type="text" th:name="product" th:value="${product.getName()}"><br/>
+                </div>
+            </div>
         </div>
+    </section>
 
-
-    </div>
-
-</section>
+</div>
 
 <section id="history" class="section">
     <div class="container">
@@ -81,9 +79,8 @@
                 that catered to his own vision.
             </p>
             <p>
-                Today that vision has become H+ Sport…offering a variety of <a
-                    href="#products">supplements, energy bars and rehydration
-                solutions</a>. At the foundation of H+ Sports are products backed by
+                Today that vision has become H+ Sport…offering a variety of <a href="#products">supplements, energy
+                bars and rehydration solutions</a>. At the foundation of H+ Sports are products backed by
                 scientific and performance data.
             </p>
         </div>
@@ -208,7 +205,8 @@
             </div>
             <!-- person-card -->
         </div>
-        <!-- container -->
+    </div>
+    <!-- container -->
 </section>
 <!-- people -->
 
@@ -236,8 +234,6 @@
     <!-- container -->
 </footer>
 <!-- footer -->
-
-
 
 
 </body>
