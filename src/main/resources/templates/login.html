@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" th:href="css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <meta charset="ISO-8859-1">
     <title>Hplus</title>
 </head>
@@ -10,7 +10,7 @@
     <nav class="nav" role="navigation">
         <div class="container nav-elements">
             <div class="branding">
-                <a th:href="@{/home}"><img th:src="@{images/hpluslogo.svg}"
+                <a th:href="@{/home}"><img th:src="@{/images/hpluslogo.svg}"
                                      alt="Logo - H Plus Sports"></a>
             </div>
             <!-- branding -->
@@ -38,7 +38,7 @@
             <label>Password</label> <input type="password" name="password"/><br />
             <input type="submit" value="Login">
         </form>
-        <a class="card-title" href="#">Register new user? Click here</a>
+        <a class="card-title" th:href="@{/goToRegistration}">Register new user? Click here</a>
     </div>
 </section>
 <!-- #products -->

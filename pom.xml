@@ -12,8 +12,8 @@
     <artifactId>hplusapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>springbootmvcmaven</name>
-    <description>springbootmvcmaven</description>
+    <name>springbootHPlus</name>
+    <description>springbootHPlus</description>
     <properties>
         <java.version>17</java.version>
     </properties>
