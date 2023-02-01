@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import springboot.edu.hplusapp.models.User;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -43,5 +42,14 @@ public class HomeController {
     @ModelAttribute("genderItems")
     public List<String> getGenderItems(){
         return Arrays.asList("Male", "Female", "Other");
+    }
+
+    @ModelAttribute("radioItems")
+    public Map<String,String> getRadioItems(){
+        HashMap<String,String> radioItems = new HashMap<>();
+        radioItems.put("sport","Play a Sport?");
+        radioItems.put("gym","Hit the Gym?");
+
+        return radioItems;
     }
 }
