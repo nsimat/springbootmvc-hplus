@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>H+ Sport user registration</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.css}">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -38,10 +38,10 @@
 
 <section id="registration" class="section">
     <div class="container tagline">
-        <em>Register a new User</em><br/>
+        <em>Register new User</em><br/>
         <form method="post" th:action="@{/registeruser}" th:object="${newuser}">
             <div class="mb-3">
-                <label>Username</label> <input class="form-control" th:field="*{username}" type="text"/><br/>
+                <label>Username</label> <input th:field="*{username}" type="text"/><br/>
             </div>
             <div class="mb-3">
                 <label>Password</label> <input th:field="*{password}" type="password"/><br/>
@@ -52,22 +52,22 @@
             <div class="mb-3">
                 <label>Last Name</label> <input th:field="*{lastName}" type="text"/><br/>
             </div>
-            <div>
+            <div class="mb-3">
                 <label>What do you want to do? </label>
-                <input type="radio" name="activity" id="activity" value="sport">Play a Sport?
-                <input type="radio" name="activity" id="activity" value="gym">Hit the Gym?<br/>
+                <span th:each="item : ${radioItems}">
+                    <input type="radio" th:field="*{activity}" th:value="${item.getKey()}" th:text="${item.getValue()}">
+                </span>
             </div>
-            <div>
+            <div class="mb-3">
                 <label>Date of birth</label>
                 <input th:field="*{dateOfBirth}" type="date"/><br/>
             </div>
-            <div>
+            <div class="mb-3">
                 <label>Gender</label>
-                <select>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-
+                <select th:field="*{gender}">
+                    <option th:each="gender : ${genderItems}"
+                            th:value="${gender}" th:text="${gender}">
+                    </option>
                 </select><br/>
             </div>
             <div>
@@ -82,7 +82,7 @@
             <div class="container nav-elements">
                 <div class="branding">
                     <a th:href="@{/home}"><img th:src="@{/images/hpluslogo.svg}"
-                                         alt="Logo - H Plus Sports"></a>
+                                               alt="Logo - H Plus Sports"></a>
                     <p class="address">
                         100 Main Street<br> Seattle, WA 98144
                     </p>
@@ -101,7 +101,8 @@
 </footer>
 <!-- footer -->
 
-<script th:src="@{/webjars/js/bootstrap.js}"></script>
+<script th:src="@{/webjars/jquery/3.6.3/jquery.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.js}"></script>
 
 </body>
 </html>

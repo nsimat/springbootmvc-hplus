@@ -3,8 +3,9 @@
       xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>H+ Sport search page</title>
+    <title>H+ Sport search</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.css}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -18,9 +19,8 @@
             </div>
             <!-- branding -->
             <ul class="navbar">
-                <li><a href="@{/home}">home</a></li>
-                <li><a href="#">login</a></li>
-                <li><a href="@{/goToSearch}">search</a></li>
+                <li><a th:href="@{/home}">home</a></li>
+                <li><a th:href="@{/goToLogin}">login</a></li>
                 <li><a href="#">linkedin</a></li>
             </ul><!-- navbar -->
             <!-- navbar -->
@@ -45,7 +45,7 @@
 
 
     <section id="products" class="section" th:if="${not #lists.isEmpty(products)}">
-        <div th:each="product : ${products}" class="productContainer">
+        <div th:each="product : ${products}" class="productContainer row">
 
                 <div class="productContainerItem">
                     <img id="pic1" th:src="${product.getImagePath()}">
@@ -215,7 +215,7 @@
         <nav class="nav" role="navigation">
             <div class="container nav-elements">
                 <div class="branding">
-                    <a href="@{/home}"><img th:src="@{/images/hpluslogo.svg}"
+                    <a th:href="@{/home}"><img th:src="@{/images/hpluslogo.svg}"
                                          alt="Logo - H Plus Sports"></a>
                     <p class="address">
                         100 Main Street<br> Seattle, WA 98144
@@ -235,6 +235,8 @@
 </footer>
 <!-- footer -->
 
+<script th:src="@{/webjars/jquery/3.6.3/jquery.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.js}"></script>
 
 </body>
 </html>
